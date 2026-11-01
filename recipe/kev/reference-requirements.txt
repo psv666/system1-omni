@@ -1,5 +1,7 @@
 # CUDA parity environment; Python 3.12. The production worker has no Python dependency.
-torch==2.8.0
+# Pin the measured CUDA wheel; a CPU or another CUDA build is not equivalent.
+--extra-index-url https://download.pytorch.org/whl/cu128
+torch==2.8.0+cu128
 transformers==5.17.0
 peft==0.21.0
 accelerate==1.15.0

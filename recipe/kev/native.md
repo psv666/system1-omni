@@ -109,7 +109,15 @@ KEV_HEAD="$PWD/weights/kev-native/head.safetensors" cargo test --release --locke
 
 Create a separate Python 3.12 reference environment with
 [`reference-requirements.txt`](reference-requirements.txt). Keep the CPU export
-environment separate if it uses a CPU-only Torch wheel. Check out
+environment separate if it uses a CPU-only Torch wheel. The requirements pin
+`torch==2.8.0+cu128` and include its CUDA wheel index; install them directly:
+
+```sh
+python3.12 -m venv .venv-kev-reference
+.venv-kev-reference/bin/pip install -r recipe/kev/reference-requirements.txt
+```
+
+Check out
 `jaredpalmer/kev@2074cc44256200bb37540103fa4572901faa10f3` as `kev-reference`.
 The fixture generator verifies the official source hashes before importing it:
 
